@@ -72,13 +72,25 @@ app.use(
                     title: args.eventInput.title,
                     description: args.eventInput.description,
                     price: +args.eventInput.price, // + sign to convert it to float
-                    date: new Date(args.eventInput.date)
+                    date: new Date(args.eventInput.date),
+                    creator: '6047be5e482f99b91376b2c5'
                 });
+                let createdEvent;
                 return event
                     .save()
                     .then(result => {
-                        console.log(result);
-                        return { ...result._doc };
+                        createdEvent = { ...result._doc, _id: result._doc._id.toString() };
+                        return User.findById('6047be5e482f99b91376b2c5')
+                    })
+                    .then(user => {
+                        if (!user) {
+                            throw new Error('User not found.')
+                        }
+                        user.createdEvents.push(event);
+                        return user.save();
+                    })
+                    .then(result => {
+                        return createdEvent
                     })
                     .catch(err => {
                         console.log(err);
@@ -86,21 +98,25 @@ app.use(
                     });
             },
             createUser: args => {
-                return bcrypt
-                    .hash(args.userInput.password, 12)
-                    .then(hashedPassword => {
-                        const user = new User({
-                            email: args.userInput.email,
-                            password: hashedPassword
-                        });
-                        return user.save();
-                    })
-                    .then(result => {
-                        return { ...result._doc, _id: result.id };
-                    })
-                    .catch(err => {
-                        throw err;
+                return User.findOne({email: args.userInput.email}).then(user =>{
+                    if (user) {
+                        throw new Error('User exists already')
+                    }
+                    return bcrypt.hash(args.userInput.password, 12)
+                })
+                .then(hashedPassword => {
+                    const user = new User({
+                        email: args.userInput.email,
+                        password: hashedPassword
                     });
+                    return user.save();
+                })
+                .then(result => {
+                    return { ...result._doc, password: null, _id: result.id };
+                })
+                .catch(err => {
+                    throw err;
+                });
                 
             }
         },
