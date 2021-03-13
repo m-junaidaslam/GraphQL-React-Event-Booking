@@ -2,7 +2,11 @@
 
 Project on [Youtube](https://www.youtube.com/watch?v=yvEEeKMuxn0&list=PL55RiY5tL51rG1x02Yyj93iypUuHYXcB_&index=3&ab_channel=Academind) to learn GraphQL with tutorials playlist
 
+## Required Software
 
+1. Visual Studio Code as IDE
+1. Chrome or any other browser for testing and development tools
+1. Postman to make complex queries (with authentication headers etc.).
 
 ## Packages to be installed
 
@@ -22,7 +26,6 @@ Project on [Youtube](https://www.youtube.com/watch?v=yvEEeKMuxn0&list=PL55RiY5tL
 
     ```npm install --save express-graphql graphql```
 
-
 1. Install mongoose to connect to online mongoDB at the [address](www.mongodb.com)
 
     ```npm install --save mongoose```
@@ -31,8 +34,9 @@ Project on [Youtube](https://www.youtube.com/watch?v=yvEEeKMuxn0&list=PL55RiY5tL
 
     ```npm install --save bcryptjs```
 
+1. Install json web token to issue authorization tokens to users
 
-
+    ```npm install --save jsonwebtoken```
 
 ## Setup Commands
 
@@ -42,14 +46,14 @@ Project on [Youtube](https://www.youtube.com/watch?v=yvEEeKMuxn0&list=PL55RiY5tL
 
     ```npm init```
 
-
 1. Start app by running
 
     ```nodemon app.js```
+
 > Node: After adding the run configurations to ``nodemon.json``, you can start server using command ``npm start``
 
 1. Setup MongoDB on the [website](www.mongodb.com)
-    
+
     * Signup on the website for free account
     * Add user with atleast Read and Write access to the database
     * Add your IP to IP Whitelist
