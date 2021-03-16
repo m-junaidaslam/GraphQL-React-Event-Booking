@@ -82,3 +82,7 @@ Project on [Youtube](https://www.youtube.com/watch?v=yvEEeKMuxn0&list=PL55RiY5tL
 1. To add routing to the single page application, we need to install react-router-dom using following command.
 
     ```npm install --save react-router-dom```
+
+1. To display react charts, install ``React Chart`` using following command:
+
+    ```npm install --save react-chartjs-2 chart.js```
