@@ -86,3 +86,7 @@ Project on [Youtube](https://www.youtube.com/watch?v=yvEEeKMuxn0&list=PL55RiY5tL
 1. To display react charts, install ``React Chart`` using following command:
 
     ```npm install --save react-chartjs-2 chart.js```
+
+## Conclusion
+
+1. Use ``Apollo`` for GraphQL. Its a huge library that can help us in creating both the graphql servers on the backend as well as use it on the frontend for efficient requests and caching of API responses. Propably for bigger applications.
