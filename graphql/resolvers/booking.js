@@ -1,6 +1,6 @@
 const Event = require('../../models/event');
 const Booking = require('../../models/booking');
-const { transformBooking, transformedEvent } = require('./merge');
+const { transformBooking, transformEvent } = require('./merge');
 
 module.exports = {
     bookings: async (args, req) => {
@@ -34,7 +34,7 @@ module.exports = {
         }
         try {
             const booking = await Booking.findById(args.bookingId).populate('event');
-            const event = transformedEvent(booking.event);
+            const event = transformEvent(booking.event);
             await Booking.deleteOne({ _id: args.bookingId });
             return event;
         } catch (err) {

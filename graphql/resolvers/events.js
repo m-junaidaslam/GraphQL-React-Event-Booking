@@ -2,14 +2,14 @@ const Event = require('../../models/event');
 const User = require('../../models/user');
 const { dateToString } = require('../../helpers/date')
 
-const { transformedEvent } = require('./merge');
+const { transformEvent } = require('./merge');
 
 module.exports = {
     events: async () => {
         try {
             const events = await Event.find()
             return events.map(event => {
-                return transformedEvent(event);
+                return transformEvent(event);
             });
         } catch (err) {
             throw err;
@@ -29,7 +29,7 @@ module.exports = {
         let createdEvent;
         try {
             const result = await event.save();
-            createdEvent = transformedEvent(result);
+            createdEvent = transformEvent(result);
             const creator = await User.findById(req.userId);
 
             if (!creator) {

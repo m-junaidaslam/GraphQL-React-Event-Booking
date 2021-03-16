@@ -2,19 +2,21 @@
 
 Project on [Youtube](https://www.youtube.com/watch?v=yvEEeKMuxn0&list=PL55RiY5tL51rG1x02Yyj93iypUuHYXcB_&index=3&ab_channel=Academind) to learn GraphQL with tutorials playlist
 
-## Backend
-
-### Required Software
+## Required Software
 
 1. Visual Studio Code as IDE
 1. Chrome or any other browser for testing and development tools
 1. Postman to make complex queries (with authentication headers etc.).
 
-### Packages to be installed
+## Required Packages
 
 1. nodejs npm:
 
     ```sudo pacman -S nodejs npm```
+
+## Backend
+
+### Backend Required Packages
 
 1. Install express server
 
@@ -52,7 +54,7 @@ Project on [Youtube](https://www.youtube.com/watch?v=yvEEeKMuxn0&list=PL55RiY5tL
 
     ```nodemon app.js```
 
-> Node: After adding the run configurations to ``nodemon.json``, you can start server using command ``npm start``
+    > After adding the run configurations to ``nodemon.json``, you can start server using command ``npm start``
 
 1. Setup MongoDB on the [website](www.mongodb.com)
 
@@ -62,6 +64,10 @@ Project on [Youtube](https://www.youtube.com/watch?v=yvEEeKMuxn0&list=PL55RiY5tL
     * Add mongodb user name and password to ``nodemon.js``
     * Connect application to database cluster. Click ``Connect`` button on the mongodb website and copy `SRV` string from the page.
     * Put the string in ```mongoose.connect(<String>)``` and replace `max` with ``$(process.env.MONGO_USER)`` and `<PASSWORD>` with ``$(process.env.MONGO_USER)``
+
+1. To bactch all the requests in one query to avoid database round trips. Install ``DataLoader`` using following command:
+
+    ```npm install --save dataloader```
 
 ## Frontend
 
@@ -76,4 +82,3 @@ Project on [Youtube](https://www.youtube.com/watch?v=yvEEeKMuxn0&list=PL55RiY5tL
 1. To add routing to the single page application, we need to install react-router-dom using following command.
 
     ```npm install --save react-router-dom```
-
